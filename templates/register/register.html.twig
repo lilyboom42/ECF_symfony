@@ -1,0 +1,16 @@
+{# templates/registration/register.html.twig #}
+
+{% extends 'base.html.twig' %}
+{% block importmap %}{{ importmap(['app']) }}{% endblock %}
+
+{# templates/register/register.html.twig #}
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <h1>Register</h1>
+    {{ form_start(userFormType) }}
+    {{ form_widget(userFormType) }}
+    <button type="submit" class="btn">Register</button>
+    {{ form_end(userFormType) }}
+{% endblock %}
+

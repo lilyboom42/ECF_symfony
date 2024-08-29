@@ -1,0 +1,27 @@
+<!-- Header -->
+<header>
+    <div class="header-content">
+        <h1>Bibliothéque</h1>
+        <nav class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </nav>
+    </div>
+</header>
+
+<!-- Navigation Bar -->
+<nav class="main-nav">
+    <ul>
+        <li><a href="/">Accueil</a></li>
+        <li><a href="#">Bibliothéque</a></li>
+       
+        <li><a href="{{ path('book_new') }}" class="add">Ajouter un livre</a></li>
+        
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <li><a href="{{ path('app_logout') }}" class="add">Déconnexion</a></li>
+        {% else %}
+            <li><a href="{{ path('app_login') }}" class="add">Connexion</a></li>
+        {% endif %}
+    </ul>
+</nav>
