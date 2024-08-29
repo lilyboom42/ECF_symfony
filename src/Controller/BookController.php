@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+
 use App\Form\BookFormType;
 use App\Entity\Book;
 use Doctrine\ORM\EntityManagerInterface;
@@ -69,5 +70,15 @@ class BookController extends AbstractController
 
         $this->addFlash('success', 'Le livre a été supprimé avec succès!');
         return $this->redirectToRoute('books_list'); // Assurez-vous que cette route est correctement définie
+    }
+
+    #[Route('/books', name: 'books_list')]
+    public function list(EntityManagerInterface $entityManager): Response
+    {
+        $books = $entityManager->getRepository(Book::class)->findAll();
+
+        return $this->render('books/list.html.twig', [
+            'books' => $books,
+        ]);
     }
 }

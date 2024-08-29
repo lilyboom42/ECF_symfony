@@ -1,0 +1,23 @@
+{# templates/books/list.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Books List{% endblock %}
+
+{% block body %}
+    <h1>Books List</h1>
+
+    {% if books is empty %}
+        <p>No books found.</p>
+    {% else %}
+        <ul>
+            {% for book in books %}
+                <li>
+                    <a href="{{ path('book_show', {'id': book.id}) }}">{{ book.title }}</a>
+                    by {{ book.author ? book.author.firstName ~ ' ' ~ book.author.lastName : 'Unknown author' }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <a href="{{ path('book_new') }}">Add a new book</a>
+{% endblock %}
